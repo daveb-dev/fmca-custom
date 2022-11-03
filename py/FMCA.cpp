@@ -271,7 +271,7 @@ PYBIND11_MODULE(FMCA, m) {
   //////////////////////////////////////////////////////////////////////////////
   // pivoted Cholesky decomposition
   //////////////////////////////////////////////////////////////////////////////
-  py::class_<FMCA::PivotedCholesky> pyPivotedCholesky_(m, "PivotedCholesky");
+   py::class_<FMCA::PivotedCholesky> pyPivotedCholesky_(m, "PivotedCholesky");
   pyPivotedCholesky_.def(py::init<>());
   pyPivotedCholesky_.def(py::init<const FMCA::CovarianceKernel &,
                                   const FMCA::Matrix &, FMCA::Scalar>());
@@ -279,10 +279,10 @@ PYBIND11_MODULE(FMCA, m) {
                          py::arg().noconvert(), py::arg().noconvert(),
                          py::arg(),
                          "Computes the pivoted Cholesky decomposition");
-  pyPivotedCholesky_.def("computeFullPiv", &pyPivotedCholesky::computeFullPiv,
-                         py::arg().noconvert(), py::arg().noconvert(),
-                         py::arg(),
-                         "Computes the truncated spectral decomposition");
-  pyPivotedCholesky_.def("indices", &pyPivotedCholesky::indices);
-  pyPivotedCholesky_.def("matrixL", &pyPivotedCholesky::matrixL);
+  pyPivotedCholesky_.def(
+      "computeFullPiv", &FMCA::PivotedCholesky::computeFullPiv,
+      py::arg().noconvert(), py::arg().noconvert(), py::arg(),
+      "Computes the truncated spectral decomposition");
+  pyPivotedCholesky_.def("indices", &FMCA::PivotedCholesky::indices);
+  pyPivotedCholesky_.def("matrixL", &FMCA::PivotedCholesky::matrixL);
 }
