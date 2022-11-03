@@ -63,7 +63,7 @@ struct pySampletTree {
 };
 ////////////////////////////////////////////////////////////////////////////////
 
-using MatrixEvaluator = FMCA::NystromEvaluator<Moments, pyCovarianceKernel>;
+using MatrixEvaluator = FMCA::NystromEvaluator<Moments, FMCA::CovarianceKernel>;
 ////////////////////////////////////////////////////////////////////////////////
 /**
  *  \brief wrapper class for an H2Matrix
