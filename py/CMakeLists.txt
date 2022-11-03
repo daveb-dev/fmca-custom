@@ -1,5 +1,5 @@
 find_package(Eigen3 REQUIRED)
-
+find_package(Pybind11 REQUIRED)
 
 
 link_directories(${CMAKE_SOURCE_DIR}/FMCA INTERFACE Eigen3)
