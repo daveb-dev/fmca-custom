@@ -239,8 +239,8 @@ PYBIND11_MODULE(FMCA, m) {
   py::class_<FMCA::CovarianceKernel> pyCovarianceKernel_(m, "CovarianceKernel");
   pyCovarianceKernel_.def(py::init<>());
   pyCovarianceKernel_.def(py::init<const std::string &, FMCA::Scalar>());
-  pyCovarianceKernel_.def("kernelType", &pyCovarianceKernel::kernelType);
-  pyCovarianceKernel_.def("eval", &pyCovarianceKernel::eval,
+  pyCovarianceKernel_.def("kernelType", &FMCA::CovarianceKernel::kernelType);
+  pyCovarianceKernel_.def("eval", &FMCA::CovarianceKernel::eval,
                           py::arg().noconvert(), py::arg().noconvert());
   //////////////////////////////////////////////////////////////////////////////
   // H2Matrix
