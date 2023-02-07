@@ -35,7 +35,8 @@ if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.18.0")
 else()
   find_package(Python 3.9 COMPONENTS Interpreter Development REQUIRED)
 endif()
-find_package(OpenMP REQUIRED)
+find_package(OpenMP QUIET)
+
 find_package(Eigen3 REQUIRED)
 find_package(Pybind11 CONFIG)
 
@@ -65,3 +66,8 @@ include_directories("${PROJECT_SOURCE_DIR}")
 add_subdirectory(tests)
 add_subdirectory(py)
 enable_testing()
+
+#if(OpenMP_CXX_FOUND)
+#    target_link_libraries(${PROJECT_NAME} PUBLIC OpenMP::OpenMP_CXX)
+#endif()
+

@@ -50,10 +50,7 @@ class CovarianceKernel {
     };
     ////////////////////////////////////////////////////////////////////////////
     else if (ktype_ == "GAUSSIAN")
-<<<<<<< Updated upstream
-      kernel_ = [this](FMCA::Scalar r) { return exp(-r * r / l_); };
-=======
-        kernel_ = [this](FMCA::Scalar r) {
+       kernel_ = [this](FMCA::Scalar r) {
         return exp(-0.5 * r * r / (l_ * l_));
     };
     else if (ktype_ == "LOCALPERIODIC")
@@ -64,7 +61,6 @@ class CovarianceKernel {
         kernel_ = [this](FMCA::Scalar r) {
         return exp(-2.0 * pow(std::sin(FMCA_PI * r ), 2.) / l_);
     };
->>>>>>> Stashed changes
     else
       assert(false && "desired kernel not implemented");
   }

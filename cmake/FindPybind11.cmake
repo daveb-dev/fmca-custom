@@ -3,7 +3,6 @@ include(FindPackageHandleStandardArgs)
 include(FetchContent)
 
 
-
 FetchContent_Declare(
         pybind11
         GIT_REPOSITORY https://github.com/pybind/pybind11.git
@@ -14,12 +13,13 @@ FetchContent_Declare(
 	    
 )
 FetchContent_GetProperties(pybind11)
+
 if(NOT pybind11_POPULATED)
     FetchContent_Populate(pybind11)
     add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
     include_directories(${pybind11_SOURCE_DIR}/include)
 
-)
+
 else()
   find_package(pybind11  REQUIRED CONFIG HINTS ${PYBIND11_DIR} ${PYBIND11_ROOT}
   $ENV{PYBIND11_DIR} $ENV{PYBIND11_ROOT})
