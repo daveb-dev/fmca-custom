@@ -261,8 +261,7 @@ PYBIND11_MODULE(FMCA, m) {
   pyCovarianceKernel_.def("eval", &FMCA::CovarianceKernel::eval,
                           py::arg().noconvert(), py::arg().noconvert());
   //////////////////////////////////////////////////////////////////////////////
-<<<<<<< Updated upstream
-=======
+
   // Derivative CovarianceKernel
   //////////////////////////////////////////////////////////////////////////////
   /*py::class_<FMCA::DerivateCovarianceKernel> pyDerivativeCovarianceKernel_(m, "DerivativeCovarianceKernel");
@@ -275,7 +274,6 @@ PYBIND11_MODULE(FMCA, m) {
   */
 
   //////////////////////////////////////////////////////////////////////////////
->>>>>>> Stashed changes
   // H2Matrix
   //////////////////////////////////////////////////////////////////////////////
   py::class_<pyH2Matrix> pyH2Matrix_(m, "H2Matrix");
