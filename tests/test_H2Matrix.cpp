@@ -27,7 +27,7 @@ using H2ClusterTree = FMCA::H2ClusterTree<FMCA::ClusterTree>;
 using H2Matrix = FMCA::H2Matrix<H2ClusterTree>;
 
 int main() {
-  const FMCA::CovarianceKernel function("EXPONENTIAL", 1);
+  const FMCA::CovarianceKernel function("EXPONENTIAL", 1.,1.);
   const FMCA::Matrix P = FMCA::Matrix::Random(DIM, NPTS);
   const Moments mom(P, MPOLE_DEG);
   H2ClusterTree ct(mom, 0, P);

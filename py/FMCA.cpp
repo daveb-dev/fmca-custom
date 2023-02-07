@@ -253,11 +253,29 @@ PYBIND11_MODULE(FMCA, m) {
   //////////////////////////////////////////////////////////////////////////////
   py::class_<FMCA::CovarianceKernel> pyCovarianceKernel_(m, "CovarianceKernel");
   pyCovarianceKernel_.def(py::init<>());
-  pyCovarianceKernel_.def(py::init<const std::string &, FMCA::Scalar>());
+  pyCovarianceKernel_.def(py::init<const std::string &, FMCA::Scalar,FMCA::Scalar>());
   pyCovarianceKernel_.def("kernelType", &FMCA::CovarianceKernel::kernelType);
+  pyCovarianceKernel_.def("set_length", &FMCA::CovarianceKernel::setLenght,
+      py::arg().noconvert());
+
   pyCovarianceKernel_.def("eval", &FMCA::CovarianceKernel::eval,
                           py::arg().noconvert(), py::arg().noconvert());
   //////////////////////////////////////////////////////////////////////////////
+<<<<<<< Updated upstream
+=======
+  // Derivative CovarianceKernel
+  //////////////////////////////////////////////////////////////////////////////
+  /*py::class_<FMCA::DerivateCovarianceKernel> pyDerivativeCovarianceKernel_(m, "DerivativeCovarianceKernel");
+  pyCovarianceKernel_.def(py::init<>());
+  pyCovarianceKernel_.def(py::init<const std::string &, FMCA::Scalar>());
+  pyCovarianceKernel_.def("kernelType", &FMCA::DerivativeCovarianceKernel::kernelType);
+  pyCovarianceKernel_.def("eval", &FMCA::DerivativeCovarianceKernel::eval,
+                          py::arg().noconvert(), py::arg().noconvert());
+  
+  */
+
+  //////////////////////////////////////////////////////////////////////////////
+>>>>>>> Stashed changes
   // H2Matrix
   //////////////////////////////////////////////////////////////////////////////
   py::class_<pyH2Matrix> pyH2Matrix_(m, "H2Matrix");

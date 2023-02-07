@@ -9,8 +9,8 @@
 // license and without any warranty, see <https://github.com/muchip/FMCA>
 // for further information.
 //
-#ifndef FMCA_COVARIANCEKERNEL_COVARIANCEKERNEL_H_
-#define FMCA_COVARIANCEKERNEL_COVARIANCEKERNEL_H_
+#ifndef FMCA_COVARIANCEKERNEL_DERIVATECOVARIANCEKERNEL_H_
+#define FMCA_COVARIANCEKERNEL_DERIVATECOVARIANCEKERNEL_H_
 
 namespace FMCA {
 class DerivateCovarianceKernel {

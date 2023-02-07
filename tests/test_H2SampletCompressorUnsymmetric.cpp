@@ -32,7 +32,7 @@ using H2SampletTree = FMCA::H2SampletTree<FMCA::ClusterTree>;
 
 int main() {
   FMCA::Tictoc T;
-  const FMCA::CovarianceKernel function("EXPONENTIAL", 1);
+  const FMCA::CovarianceKernel function("EXPONENTIAL", 1,1.);
   const FMCA::Matrix P = 0.5 * (FMCA::Matrix::Random(DIM, NPTS).array() + 1);
   const FMCA::Scalar threshold = 1e-10;
   const FMCA::Index dtilde = 4;
