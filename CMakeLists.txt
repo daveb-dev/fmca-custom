@@ -35,7 +35,40 @@ if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.18.0")
 else()
   find_package(Python 3.9 COMPONENTS Interpreter Development REQUIRED)
 endif()
-find_package(OpenMP REQUIRED)
+
+
+# try to hack windows compiler 
+if(MSVC)
+    set(CMAKE_CXX_FLAGS_DEFAULT "/DWIN32 /D_WINDOWS /W3 /GR /EHsc")
+    if("${CMAKE_CXX_FLAGS}" STREQUAL "${CMAKE_CXX_FLAGS_DEFAULT}")
+        string(APPEND CMAKE_CXX_FLAGS " /fp:precise /bigobj /wd4996 /source-charset:utf-8 ")
+        set(MSVC_MP ${CPUCores})
+
+        if(CMAKE_VERSION VERSION_LESS 3.11.0)
+            if(MSVC_MP EQUAL 0)
+                string(APPEND CMAKE_CXX_FLAGS " /MP")
+            elseif(MSVC_MP GREATER 1)
+                string(APPEND CMAKE_CXX_FLAGS " /MP${MSVC_MP}")
+            endif()
+        else()
+            if(MSVC_MP EQUAL 0)
+                add_compile_options($<$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>:/MP>)
+            elseif(MSVC_MP GREATER 1)
+                add_compile_options($<$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>:/MP${MSVC_MP}>)
+            endif()
+        endif()
+    endif()
+endif()
+
+
+find_package(OpenMP COMPONENTS  CXX)
+
+if(OpenMP_FOUND)
+    string(APPEND CMAKE_CXX_FLAGS " ${OpenMP_CXX_FLAGS}")
+    string(APPEND CMAKE_EXE_LINKER_FLAGS "${OpenMP_EXE_LINKER_FLAGS}")
+endif()
+
+
 find_package(Eigen3 REQUIRED)
 find_package(Pybind11 CONFIG)
 

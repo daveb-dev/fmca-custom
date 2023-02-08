@@ -1,5 +1,6 @@
 find_package(Eigen3 REQUIRED)
 find_package(Pybind11 REQUIRED)
+find_package(OpenMP REQUIRED)
 
 if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.18.0")
 link_directories(${CMAKE_SOURCE_DIR}/FMCA INTERFACE Eigen3)
@@ -9,18 +10,20 @@ endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/FMCA)
 
-pybind11_add_module(FMCA FMCA.cpp)
+
+add_library(FMCA MODULE FMCA.cpp)
+
+
 target_compile_definitions(FMCA
                            PRIVATE VERSION_INFO=0.1)
 
-add_library(FMCA MODULE FMCA.cpp)
 
 execute_process(OUTPUT_STRIP_TRAILING_WHITESPACE COMMAND 
 python3-config --extension-suffix OUTPUT_VARIABLE FMCA_SUFFIX)
 message("Library suffix: ${FMCA_SUFFIX}")
 
 
-  execute_process( COMMAND  python3-config "--includes"
+execute_process( COMMAND  python3-config "--includes"
                    OUTPUT_VARIABLE PYTHON_INCLUDE
                    RESULT_VARIABLE PYTHON_INCLUDE_RESULT
                    ERROR_QUIET    OUTPUT_STRIP_TRAILING_WHITESPACE

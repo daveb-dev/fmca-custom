@@ -31,25 +31,25 @@ void plotBoxes(const std::string &fileName, const std::vector<Matrix> &bb) {
   // print point list
   myfile << "POINTS " << 8 * bb.size() << " FLOAT\n";
   for (auto it = bb.begin(); it != bb.end(); ++it) {
-    auto min = it->col(0);
-    auto max = it->col(1);
+    auto minimum = it->col(0);
+    auto maximum = it->col(1);
     // lower plane
-    myfile << float(min(0)) << " " << float(min(1)) << " " << float(min(2))
+    myfile << float(minimum(0)) << " " << float(minimum(1)) << " " << float(minimum(2))
            << "\n";
-    myfile << float(max(0)) << " " << float(min(1)) << " " << float(min(2))
+    myfile << float(maximum(0)) << " " << float(minimum(1)) << " " << float(minimum(2))
            << "\n";
-    myfile << float(min(0)) << " " << float(max(1)) << " " << float(min(2))
+    myfile << float(minimum(0)) << " " << float(maximum(1)) << " " << float(minimum(2))
            << "\n";
-    myfile << float(max(0)) << " " << float(max(1)) << " " << float(min(2))
+    myfile << float(maximum(0)) << " " << float(maximum(1)) << " " << float(minimum(2))
            << "\n";
     // upper plane
-    myfile << float(min(0)) << " " << float(min(1)) << " " << float(max(2))
+    myfile << float(minimum(0)) << " " << float(minimum(1)) << " " << float(maximum(2))
            << "\n";
-    myfile << float(max(0)) << " " << float(min(1)) << " " << float(max(2))
+    myfile << float(maximum(0)) << " " << float(minimum(1)) << " " << float(maximum(2))
            << "\n";
-    myfile << float(min(0)) << " " << float(max(1)) << " " << float(max(2))
+    myfile << float(minimum(0)) << " " << float(maximum(1)) << " " << float(maximum(2))
            << "\n";
-    myfile << float(max(0)) << " " << float(max(1)) << " " << float(max(2))
+    myfile << float(maximum(0)) << " " << float(maximum(1)) << " " << float(maximum(2))
            << "\n";
   }
   myfile << "\n";
